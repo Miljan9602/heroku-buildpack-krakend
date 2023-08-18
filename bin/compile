@@ -1,11 +1,11 @@
 #!/bin/bash
 
-KRAKEND_VERSION="2.0.6"
+KRAKEND_VERSION="v2.4.3"
 BUILD_DIR="$1"
 
 echo "-----> Downloading KrakenD $KRAKEND_VERSION"
 [ -d $BUILD_DIR/.heroku ] || mkdir $BUILD_DIR/.heroku
-curl -s https://github.com/krakend/krakend-ce/archive/refs/tags/v2.4.3.tar.gz | tar -zxv -C $BUILD_DIR/.heroku -f -
+wget -O - https://github.com/krakend/krakend-ce/archive/refs/tags/${KRAKEND_VERSION}.tar.gz | tar -zxv -C $BUILD_DIR/.heroku -f -
 
 [ -d $BUILD_DIR/.profile.d ] || mkdir -p $BUILD_DIR/.profile.d
 cp -v profile/* $BUILD_DIR/.profile.d/
